@@ -7,36 +7,46 @@ import valueHolder
 
 class LoadingWindow():
     def __init__(self):
-        self.window = Tk()
-
-        self.root = Frame(self.window, height=300,width=300)
-        self.root.pack()
-        self.root.pack_propagate(0)
-        self.window.title('PySpider')
-        self.photo = PhotoImage(file="crawlingSpider.png")
-        self.label = Label(self.root, image=self.photo)
-        self.label.pack()
         self.sec = 0
-        self.label2 = Label(self.root, text="Working")
+
+        self.window = Tk()
+        self.window.title('PySpider Working')
+
+        self.imgFrame = Frame(self.window)
+        self.imgFrame.pack(side=BOTTOM)
+
+        self.textFrame = Frame(self.window)
+        self.textFrame.pack(side=BOTTOM)
+
+        #self.imgFrame.pack_propagate(0)
+
+        self.photo = PhotoImage(file="crawlingSpider.png")
+
+        self.label = Label(self.imgFrame, image=self.photo)
+        self.label.pack()
+
+        self.label2 = Label(self.textFrame, text="Working")
         self.label2.pack()
 
-        self.timerupdate()
-        self.root.mainloop()
+        self.timerUpdate()
+        self.window.mainloop()
 
-    def timerupdate(self):
-        self.sec = self.sec + 1
+    def timerUpdate(self):
+        self.sec += 1
 
         if self.sec % 2 is 1:
             self.photo = PhotoImage(file="crawlingSpider.png")
-            self.label2.configure(text="working   ")
+            self.label2.configure(text="Working   ")
         else:
-            self.photo = PhotoImage(file="crawlingSpider 2.png")
-            self.label2.configure(text="working...")
+            self.photo = PhotoImage(file="crawlingSpider_2.png")
+            self.label2.configure(text="Working...")
 
         self.label.configure(image=self.photo)
-        self.root.after(1000, self.timerupdate)
+        self.imgFrame.after(500, self.timerUpdate)
 
     def runWindow(self):
-        self.root.mainloop()
+        self.imgFrame.mainloop()
         time.sleep(5)
-        self.root.destroy()
+        self.imgFrame.destroy()
+
+# window = LoadingWindow() # display window

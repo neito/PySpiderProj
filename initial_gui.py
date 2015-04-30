@@ -1,4 +1,4 @@
-from Tkinter import Tk, Frame, BOTH, button, style
+from tkinter import Tk, Frame, BOTH, button, style
 from ttk import *
 #A class that can be initiated to create an initial gui for the PySpider program.
 #(May accidentially include some code from the TKinter tutorial at http://zetcode.com/gui/tkinter/introduction/)
